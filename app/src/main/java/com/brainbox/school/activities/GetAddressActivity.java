@@ -98,18 +98,17 @@ public class GetAddressActivity extends AppCompatActivity {
 
         if (!Validate.isStreetValid(street)) {
             MessageCustomDialogDTO messageCustomDialogDTO = new MessageCustomDialogDTO();
-            messageCustomDialogDTO.setMessage(getString(R.string.error_field_required));
+            messageCustomDialogDTO.setMessage(getString(R.string.error_invalid_street));
             SnackBar.show(this, messageCustomDialogDTO);
 
         } else if (!Validate.isCityValid(city)) {
-
             MessageCustomDialogDTO messageCustomDialogDTO = new MessageCustomDialogDTO();
-            messageCustomDialogDTO.setMessage(getString(R.string.error_field_required));
+            messageCustomDialogDTO.setMessage(getString(R.string.error_invalid_city));
             SnackBar.show(this, messageCustomDialogDTO);
 
         } else if (!Validate.isStateValid(state)) {
             MessageCustomDialogDTO messageCustomDialogDTO = new MessageCustomDialogDTO();
-            messageCustomDialogDTO.setMessage(getString(R.string.error_field_required));
+            messageCustomDialogDTO.setMessage(getString(R.string.error_invalid_state));
             SnackBar.show(this, messageCustomDialogDTO);
         } else if (!Validate.isPincodeValid(pincode)) {
             MessageCustomDialogDTO messageCustomDialogDTO = new MessageCustomDialogDTO();
@@ -119,7 +118,6 @@ public class GetAddressActivity extends AppCompatActivity {
 
          else {
             AddressDTO addressDTO = new AddressDTO();
-
             addressDTO.setStreet(street);
             addressDTO.setCity(city);
             addressDTO.setState(state);

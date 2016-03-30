@@ -14,4 +14,7 @@
     <string name="error_invalid_school">This school is invalid</string>
     <string name="error_invalid_pincode">This pincode is invalid</string>
     <string name="error_invalid_name">Your name is invalid</string>
+    <string name="error_invalid_street">This state is invalid</string>
+    <string name="error_invalid_city">This city is invalid</string>
+    <string name="error_invalid_state">This state is invalid</string>
 </resources>
