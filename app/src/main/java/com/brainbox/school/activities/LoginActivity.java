@@ -14,18 +14,21 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import com.brainbox.school.R;
+import com.brainbox.school.dto.LoginDTO;
 import com.brainbox.school.dto.MessageCustomDialogDTO;
+import com.brainbox.school.global.AppConfig;
+import com.brainbox.school.network.Login;
 import com.brainbox.school.security.Validate;
 import com.brainbox.school.ui.CustomTitle;
 import com.brainbox.school.ui.CustomTypeFace;
+import com.brainbox.school.ui.Dialog;
 import com.brainbox.school.ui.SnackBar;
 import com.brainbox.school.ui.autocompletetextview.CustomAutoCompleteTextView;
 import com.brainbox.school.ui.button.ButtonPlus;
 import com.brainbox.school.ui.edittext.CustomEditText;
+import com.brainbox.school.util.NetworkCheck;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -117,7 +120,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         if (!Validate.isValidEmailAddress(email)) {
             MessageCustomDialogDTO messageCustomDialogDTO = new MessageCustomDialogDTO();
-            messageCustomDialogDTO.setMessage(getString(R.string.error_field_required));
+            messageCustomDialogDTO.setMessage(getString(R.string.error_invalid_email));
             SnackBar.show(this, messageCustomDialogDTO);
 
         } else if (!Validate.isPasswordValid(password)) {
@@ -125,7 +128,24 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             messageCustomDialogDTO.setMessage(getString(R.string.error_invalid_password));
             SnackBar.show(this, messageCustomDialogDTO);
         } else {
-            Toast.makeText(LoginActivity.this, "Login", Toast.LENGTH_SHORT).show();
+            if(!NetworkCheck.isNetworkAvailable(this)){
+                MessageCustomDialogDTO messageCustomDialogDTO = new MessageCustomDialogDTO();
+                messageCustomDialogDTO.setMessage(getString(R.string.no_internet));
+                SnackBar.show(this, messageCustomDialogDTO);
+                return;
+            }
+
+            try{
+                LoginDTO loginDTO = new LoginDTO();
+                loginDTO.setEmail(email);
+                loginDTO.setPassword(password);
+                loginDTO.setScope(AppConfig.SCOPE);
+
+                Login login = new Login();
+                login.run(this, loginDTO);
+            }catch (Exception e){
+                Dialog.showSimpleDialog(this, e.toString());
+            }
         }
     }
 

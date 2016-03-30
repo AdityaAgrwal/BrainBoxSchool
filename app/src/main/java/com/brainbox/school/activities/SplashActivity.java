@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
 import com.brainbox.school.R;
-import com.brainbox.school.dto.SessionDTO;
+import com.brainbox.school.util.BrainBox;
 
 
 /**
@@ -36,8 +36,13 @@ public class SplashActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    Intent intent = new Intent(SplashActivity.this, AppInfoActivity.class);
-                    startActivity(intent);
+                    if(!BrainBox.isLogin(SplashActivity.this)) {
+                        Intent intent = new Intent(SplashActivity.this, AppInfoActivity.class);
+                        startActivity(intent);
+                    }else{
+                        Intent intent = new Intent(SplashActivity.this, DashboardActivity.class);
+                        startActivity(intent);
+                    }
                   /*  Splash splash = new Splash();
                     if (splash.isLogin(SplashActivity.this)) {
                         Intent intent = new Intent("com.o9pathshala.student.slidingmenu.fragments.MainActivity");

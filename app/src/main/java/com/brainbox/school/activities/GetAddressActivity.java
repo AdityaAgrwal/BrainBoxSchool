@@ -10,13 +10,13 @@ import com.brainbox.school.R;
 import com.brainbox.school.dto.AddressDTO;
 import com.brainbox.school.dto.MessageCustomDialogDTO;
 import com.brainbox.school.dto.RegisterDTO;
+import com.brainbox.school.network.Register;
 import com.brainbox.school.security.Validate;
 import com.brainbox.school.ui.CustomTitle;
 import com.brainbox.school.ui.Dialog;
 import com.brainbox.school.ui.SnackBar;
 import com.brainbox.school.ui.button.ButtonPlus;
 import com.brainbox.school.ui.edittext.CustomEditText;
-
 import com.brainbox.school.util.NetworkCheck;
 import com.google.gson.Gson;
 
@@ -124,11 +124,6 @@ public class GetAddressActivity extends AppCompatActivity {
             addressDTO.setPincode(pincode);
             registerDTO.setAddress(addressDTO);
 
-            /*RegisterAsyncTask registerAsyncTask = new RegisterAsyncTask(this, registerDTO);
-          *//*  if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.HONEYCOMB)
-                registerAsyncTask.executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR);
-            else*//*
-                registerAsyncTask.execute();*/
             if(!NetworkCheck.isNetworkAvailable(this)){
                 MessageCustomDialogDTO messageCustomDialogDTO = new MessageCustomDialogDTO();
                 messageCustomDialogDTO.setMessage(getString(R.string.no_internet));
@@ -136,12 +131,12 @@ public class GetAddressActivity extends AppCompatActivity {
                 return;
             }
 
-           /* try{
+            try{
                 Register register = new Register();
                 register.run(this, registerDTO);
             }catch (Exception e){
                 Dialog.showSimpleDialog(this, e.toString());
-            }*/
+            }
         }
     }
 }
