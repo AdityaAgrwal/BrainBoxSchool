@@ -1,3 +1,81 @@
 <resources>
-    <string name="app_name">BrainBoxSchool</string>
+    <string name="app_name">Brainbox School</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+
+    <!-- Buttons -->
+
+    <string name="get_started">Get Started</string>
+    <string name="btn_login">Sign In</string>
+    <string name="btn_singup">Sign Up</string>
+    <string name="btn_continue">Continue</string>
+
+    <!-- Titles -->
+
+    <string name="login">Login</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="address">Address</string>
+
+    <string name="email">Email</string>
+    <string name="please_wait">Please wait</string>
+
+    <string name="password">Password</string>
+    <string name="school_name">School Name</string>
+    <string name="school_branch">School Branch</string>
+    <string name="mobile">Mobile Number</string>
+    <string name="your_name">Your Name</string>
+    <string name="email_or_phone">Email or Phone</string>
+
+    <string name="street">Street</string>
+    <string name="city">City</string>
+    <string name="state">State</string>
+    <string name="pincode">Pincode</string>
+
+    <string name="ok">OK</string>
+    <string name="forgot_password">Forgot Password ?</string>
+    <string name="no_internet">Could not connect with internet.</string>
+    <string name="sign_in_page">Not registered ? Sign Up</string>
+    <string name="mail_sent">A verification e-mail has been sent to your email ID. Kindly check it and activiate your account.</string>
+    <string name="drawer_frame_layout">DrawerFrameLayout</string>
+    <string name="drawer_activity">DrawerActivity</string>
+    <string name="drawer_open">Menu open</string>
+    <string name="drawer_close">Menu closed</string>
+
+    <string name="lorem_ipsum_short" translatable="false">Admin</string>
+    <string name="lorem_ipsum_medium" translatable="false">Lorem ipsum dolor sit amet</string>
+    <string name="lorem_ipsum_long" translatable="false">D.P.S. Kalyanpur</string>
+
+
+    <string name="dashboard">Dashboard</string>
+    <string name="news_feed">News Feed</string>
+
+    <string name="teachers">Teachers</string>
+    <string name="student">Student</string>
+    <string name="classes">Classes</string>
+
+
+    <string name="staff">Staff</string>
+    <string name="calender">Calender</string>
+    <string name="events">Events</string>
+    <string name="gallery">Gallery</string>
+
+    <string name="forms">Forms</string>
+    <string name="lost_n_found">Lost and Found</string>
+    <string name="advertise">Advertise</string>
+    <string name="contact_us">Contact SkulApp</string>
+
+    <string name="starred_string">Starred</string>
+    <string name="inbox_string">Inbox</string>
+    <string name="sent_mail_string">Sent mail</string>
+    <string name="draft_string">Drafts</string>
+    <string name="subheader">Subheader</string>
+    <string name="trash_string">Trash</string>
+    <string name="all_mail_string">All mails</string>
+    <string name="spam_string">Spams</string>
+
+    <string name="closeDrawer">Navigation View</string>
+    <string name="openDrawer">Navigation View Closed</string>
+
 </resources>

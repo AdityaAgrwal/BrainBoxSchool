@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/primary"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+
+    <android.support.v4.view.ViewPager xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_above="@+id/linearLayoutAppInfoButton"
+        android:background="@color/primary" />
+
+    <com.flyco.pageindicator.indicator.FlycoPageIndicaor xmlns:fpi="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/linearLayoutAppInfoButton"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="10dp"
+        android:paddingTop="20dp"
+        fpi:fpi_cornerRadius="5dp"
+        fpi:fpi_gap="12dp"
+        fpi:fpi_height="10dp"
+        fpi:fpi_selectColor="@color/white"
+        fpi:fpi_unselectColor="@color/primary_dark"
+        fpi:fpi_width="10dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayoutAppInfoButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@color/white"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <com.brainbox.school.ui.button.ButtonPlus
+            android:id="@+id/btnLogin"
+            style="@style/button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/abc_alpha_bottom_btn_background"
+            android:text="LOG IN"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/btn_text_color" />
+
+        <com.brainbox.school.ui.button.ButtonPlus
+            android:id="@+id/btnSignUp"
+            style="@style/button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_weight="0.5"
+            android:background="@drawable/abc_alpha_bottom_btn_background"
+            android:padding="15dp"
+            android:text="SIGN UP"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="@color/btn_text_color" />
+    </LinearLayout>
+</RelativeLayout>

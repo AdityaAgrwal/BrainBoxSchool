@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar" />
+
+    <ScrollView
+        android:id="@+id/login_form"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <com.brainbox.school.ui.edittext.CustomEditText
+                android:id="@+id/etSchoolName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="40dip"
+                android:background="@drawable/abc_alpha_bottom_et_login_background"
+                android:drawablePadding="15dp"
+                android:hint="@string/school_name"
+                android:inputType="textCapWords"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="#DDAAAAAA"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="16sp" />
+
+            <com.brainbox.school.ui.edittext.CustomEditText
+                android:id="@+id/etSchoolBranch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/abc_alpha_bottom_et_login_background"
+                android:drawablePadding="15dp"
+                android:hint="@string/school_branch"
+                android:inputType="textCapWords"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="#DDAAAAAA"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="16sp"  />
+
+            <com.brainbox.school.ui.edittext.CustomEditText
+                android:id="@+id/etYourName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/abc_alpha_bottom_et_login_background"
+                android:drawablePadding="15dp"
+                android:hint="@string/your_name"
+                android:inputType="textCapWords"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="#DDAAAAAA"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="16sp"  />
+
+            <com.brainbox.school.ui.autocompletetextview.CustomAutoCompleteTextView
+                android:id="@+id/etEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dip"
+                android:layout_marginRight="15dip"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/abc_alpha_top_et_login_background"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"
+                android:padding="10dip"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="#DDAAAAAA"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="16sp" />
+
+            <com.brainbox.school.ui.edittext.CustomEditText
+                android:id="@+id/etMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/abc_alpha_bottom_et_login_background"
+                android:drawablePadding="15dp"
+                android:hint="@string/mobile"
+                android:inputType="number"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textColorHint="#DDAAAAAA"
+                android:textCursorDrawable="@drawable/color_cursor"
+                android:textSize="16sp" />
+
+            <com.brainbox.school.ui.button.ButtonPlus
+                android:id="@+id/btnSignUp"
+                style="@style/button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginRight="25dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/abc_alpha_btn_background"
+                android:padding="10dp"
+                android:text="@string/btn_continue"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
