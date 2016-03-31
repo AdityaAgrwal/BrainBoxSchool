@@ -17,6 +17,7 @@
     <string name="login">Login</string>
     <string name="sign_up">Sign Up</string>
     <string name="address">Address</string>
+    <string name="profile">Profile</string>
 
     <string name="email">Email</string>
     <string name="please_wait">Please wait</string>
@@ -60,6 +61,8 @@
     <string name="calender">Calender</string>
     <string name="events">Events</string>
     <string name="gallery">Gallery</string>
+
+    <string name="image">Image</string>
 
     <string name="forms">Forms</string>
     <string name="lost_n_found">Lost and Found</string>

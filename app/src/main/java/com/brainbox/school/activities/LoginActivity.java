@@ -82,7 +82,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     private void populate() {
         ButterKnife.bind(this);
-        populateAutoComplete();
+       // populateAutoComplete();
         setSupportActionBar(toolbar);
 
         txtForgotPassword.setTypeface(CustomTypeFace.getTypeface(this));

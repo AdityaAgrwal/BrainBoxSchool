@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
+import com.brainbox.school.dto.HeaderDTO;
+import com.brainbox.school.dto.SchoolDTO;
 import com.brainbox.school.dto.SessionDTO;
 import com.brainbox.school.global.AppConfig;
 import com.google.gson.Gson;
@@ -57,6 +59,20 @@ public class BrainBox {
         editor.commit();
     }
 
+    public static SchoolDTO getSchoolDTO(Context context){
+        SharedPreferences sharedPreferences = getSharedPreferences(context);
+        Gson gson = new Gson();
+        SessionDTO sessionDTO = gson.fromJson(sharedPreferences.getString("session", null), SessionDTO.class);
+        return sessionDTO.getSchoolDTO();
+    }
+
+    public static HeaderDTO getHeaderDTO(Context context){
+        SharedPreferences sharedPreferences = getSharedPreferences(context);
+        Gson gson = new Gson();
+        SessionDTO sessionDTO = gson.fromJson(sharedPreferences.getString("session", null), SessionDTO.class);
+        return sessionDTO.getHeaderDTO();
+    }
+
     /*public static void setStudentDTO(Context context, Schoo studentDTO){
         SharedPreferences.Editor editor = getSharedEditor(context);
 
@@ -69,12 +85,7 @@ public class BrainBox {
     }
 
 
-    public static StudentDTO getStudentDTO(Context context){
-        SharedPreferences sharedPreferences = getSharedPreferences(context);
-        Gson gson = new Gson();
-        SessionDTO sessionDTO = gson.fromJson(sharedPreferences.getString("session", null), SessionDTO.class);
-        return sessionDTO.getStudentDTO();
-    }
+
 
    */
 }

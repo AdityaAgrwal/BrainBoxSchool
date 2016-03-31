@@ -1,5 +1,9 @@
 package com.brainbox.school.activities;
 
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -7,14 +11,21 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.brainbox.school.R;
+import com.brainbox.school.dto.SchoolDTO;
+import com.brainbox.school.dto.SessionDTO;
 import com.brainbox.school.ui.Dialog;
 import com.brainbox.school.util.BrainBox;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
+import com.theartofdev.edmodo.cropper.CropImageView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -28,6 +39,8 @@ public class DashboardActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     // private GaussianBlur gaussianBlur;
     private MenuItem previousMenuItem;
+    private TextView txtSchoolName , txtAdminName;
+    private SchoolDTO schoolDTO;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +48,27 @@ public class DashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
         ButterKnife.bind(this);
 
-
-        Dialog.showSimpleDialog(this, BrainBox.getSessionDTO(this).toString());
+        schoolDTO = BrainBox.getSchoolDTO(this);
         setSupportActionBar(toolbar);
 
-        View headerView = navigationView.getHeaderView(0);
+        final View headerView = navigationView.getHeaderView(0);
         headerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(DashboardActivity.this, "Clicked!", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(DashboardActivity.this , ProfileUpdateActivity.class);
+                startActivity(intent);
+
             }
         });
+
+        txtSchoolName = (TextView) headerView.findViewById(R.id.txtSchoolName);
+        txtAdminName = (TextView) headerView.findViewById(R.id.txtAdminName);
+
+        txtAdminName.setText(schoolDTO.getAdmin());
+        if(null != schoolDTO.getBranch())
+            txtSchoolName.setText(schoolDTO.getName() + "  " + schoolDTO.getBranch());
+        else
+            txtSchoolName.setText(schoolDTO.getName());
        /* gaussianBlur = new GaussianBlur();
         Bitmap icon = BitmapFactory.decodeResource(getResources(), R.drawable.cat);
         AndroidImage androidImage = new AndroidImage(icon);
@@ -57,6 +80,26 @@ public class DashboardActivity extends AppCompatActivity {
         headerView.setBackgroundDrawable(bitmapDrawable);
         ((ImageView)headerView.findViewById(R.id.profile_image)).setImageBitmap(icon);
 */
+
+       /* Picasso.with(this).load("http://dl.skylearning.in/eRepository/Profile/DL_Org/Banner_Org_9.png").transform(new BlurTransformation(this)).into(new Target() {
+
+            @Override
+            public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                Log.d("TAG", "LOADED");
+                headerView.setBackgroundDrawable(new BitmapDrawable(getResources(), bitmap));
+            }
+
+            @Override
+            public void onBitmapFailed(final Drawable errorDrawable) {
+                Log.d("TAG", "FAILED");
+            }
+
+            @Override
+            public void onPrepareLoad(final Drawable placeHolderDrawable) {
+                Log.d("TAG", "Prepare Load");
+            }
+        });*/
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
             // This method will trigger on item Click of navigation menu
