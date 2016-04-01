@@ -9,8 +9,7 @@ import com.afollestad.materialdialogs.MaterialDialog;
  */
 public class GetProgressBar {
     public static MaterialDialog.Builder get(Context context) {
-        MaterialDialog.Builder builder = new MaterialDialog.Builder(context)
-                .content("Please Wait").cancelable(false).progress(true, 0);
+        MaterialDialog.Builder builder = new MaterialDialog.Builder(context).content("Please Wait").cancelable(false).progress(true, 0);
         return builder;
     }
 }

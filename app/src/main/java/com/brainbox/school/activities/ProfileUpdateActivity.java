@@ -1,7 +1,10 @@
 package com.brainbox.school.activities;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v7.app.ActionBar;
@@ -15,11 +18,20 @@ import android.widget.Toast;
 
 import com.brainbox.school.R;
 import com.brainbox.school.dto.SchoolDTO;
+import com.brainbox.school.network.UpdateImage;
 import com.brainbox.school.profile_update_fragments.RecyclerViewFragment;
 import com.brainbox.school.ui.CustomTitle;
+import com.brainbox.school.ui.SnackBar;
 import com.brainbox.school.util.BrainBox;
 import com.github.florent37.materialviewpager.MaterialViewPager;
 import com.github.florent37.materialviewpager.header.HeaderDesign;
+import com.soundcloud.android.crop.Crop;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -152,9 +164,45 @@ public class ProfileUpdateActivity extends AppCompatActivity{
     public boolean onOptionsItemSelected(MenuItem item) {
 
         if (item.getItemId() == R.id.action_edit_image) {
-            Intent intent = new Intent(this , CropImageActivity.class);
-            startActivity(intent);
+            Crop.pickImage(this);
         }
         return super.onOptionsItemSelected(item);
     }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent result) {
+        if (requestCode == Crop.REQUEST_PICK && resultCode == RESULT_OK) {
+            beginCrop(result.getData());
+        } else if (requestCode == Crop.REQUEST_CROP) {
+            handleCrop(resultCode, result);
+        }
+    }
+
+    private void beginCrop(Uri source) {
+        Uri destination = Uri.fromFile(new File(getCacheDir(), "cropped"));
+        Crop.of(source, destination).asSquare().start(this);
+    }
+
+    private void handleCrop(int resultCode, Intent result) {
+        if (resultCode == RESULT_OK) {
+            try {
+                Uri uri = Crop.getOutput(result);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                byte[] byteArray = byteArrayOutputStream .toByteArray();
+
+                UpdateImage updateImage = new  UpdateImage();
+                updateImage.run(this , byteArray);
+            } catch (Exception e) {
+                e.printStackTrace();
+                SnackBar.showSimple(this , getString(R.string.crop__pick_error));
+            }
+
+        } else if (resultCode == Crop.RESULT_ERROR) {
+            Toast.makeText(this, Crop.getError(result).getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
 }

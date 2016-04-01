@@ -8,4 +8,5 @@ public interface NetworkConstnats {
 
     String REGISTER_URL = IP + "/School/register";
     String LOGIN_URL = IP + "/School/login";
+    String UPDATE_IMAGE_URL = IP + "/Files/upload?container=CONTAINER&id=SCHOOLID";
 }

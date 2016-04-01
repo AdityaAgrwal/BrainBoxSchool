@@ -10,6 +10,8 @@ import com.brainbox.school.dto.SessionDTO;
 import com.brainbox.school.global.AppConfig;
 import com.google.gson.Gson;
 
+import java.util.Random;
+
 /**
  * Created by smpx-imac1 on 30/03/16.
  */
@@ -73,6 +75,11 @@ public class BrainBox {
         return sessionDTO.getHeaderDTO();
     }
 
+    public static String getBoundary(){
+        Random random = new Random();
+        String tag = Long.toString(Math.abs(random.nextLong()), 36);
+        return tag.substring(0, 8);
+    }
     /*public static void setStudentDTO(Context context, Schoo studentDTO){
         SharedPreferences.Editor editor = getSharedEditor(context);
 

@@ -23,9 +23,6 @@ import com.brainbox.school.dto.SchoolDTO;
 import com.brainbox.school.dto.SessionDTO;
 import com.brainbox.school.ui.Dialog;
 import com.brainbox.school.util.BrainBox;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.Target;
-import com.theartofdev.edmodo.cropper.CropImageView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
